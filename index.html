@@ -63,13 +63,17 @@
 </form>
 
 <img src="hotel2.jpg" class="img-fluid" alt="Responsive image">
-<div class="card" style="width: 18rem;">
+<div class="row">
+<div class="col-sm-12">
+<div class="card bg-dark">
   <div class="card-body">
-    <h5 class="card-title op">THE WAY TO DESTINATION</h5>
-    <h6 class="card-subtitle mb-2 text-muted" id="nav"></h6>
+    <h5 id="op">THE WAY TO DESTINATION</h5>
+    <h6 class="ox" id="nav"></h6>
     <p class="card-text" id="nav1"></p>
     
   </div>
+</div>
+</div>  
 </div>
 <div class="embed-responsive embed-responsive-16by9">
 <iframe class="embed-responsive-item"<iframe src="https://www.google.com/maps/embed?pb=!1m58!1m12!1m3!1d3930.209588314233!2d78.11305630033382!3d9.916495142873636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m43!3e2!4m5!1s0x3b00c580cd5efea7%3A0xda4632f8b65e2b05!2sHotel%20Sree%20Sabarees!3m2!1d9.91816!2d78.1126989!4m5!1s0x3b00c58171d01c83%3A0x9ff830d945ca631e!2sMurugan%20Idli%20Shop%2C%20196%2C%20W%20Masi%20Rd%2C%20Periyar%2C%20Madurai%20Main%2C%20Madurai%2C%20Tamil%20Nadu%20625001!3m2!1d9.9162197!2d78.1156251!4m5!1s0x3b00c581f25a3c47%3A0x6446ccb945ac2e47!2sAyyappan%20Dosai%20Kadai%2C%20Pandiya%20Velalar%20St%2C%20Periyar%2C%20Madurai%20Main%2C%20Madurai%2C%20Tamil%20Nadu%20625001!3m2!1d9.913220299999999!2d78.1161296!4m5!1s0x3b00c586ce11d649%3A0x44ccc48e6b922562!2sDhivya%20Mahal%2C%2021%2C%20Town%20Hall%20Rd%2C%20near%20Canara%20Bank%2C%20Madurai%20Main%2C%20Madurai%2C%20Tamil%20Nadu%20625001!3m2!1d9.9185743!2d78.11366009999999!4m5!1s0x390cdb853b21e84f%3A0xa72c074b3a9fc08!2sThe%20Modern%20Restaurants%2C%20N.S.L%20160%2C%20Netaji%20Road%2C%20Near%20Meenakshi%20Amman%20Temple%2C%20Madurai%20Main%2C%20Madurai%2C%20Tamil%20Nadu%20625001!3m2!1d9.9175417!2d78.1170157!4m5!1s0x3b00cf7a403f455f%3A0x90d804f6fd1fec20!2sHotel%20Amirtha%2C%2029-30%2C%20W%20Tower%20St%2C%20Madurai%20Main%2C%20Madurai%2C%20Tamil%20Nadu%20625001!3m2!1d9.919229699999999!2d78.1178637!4m5!1s0x3b00c5869c3aacab%3A0xa0afdc423b7e535d!2sSree%20Mohan%20Bhojanalay%2C%2033%2C%20Dhanappa%20Mudali%20Street%2C%20W%20Tower%20St%2C%20Opp%20Hotel%20Temple%20View%2C%20Madurai%2C%20Tamil%20Nadu%20625001!3m2!1d9.91977!2d78.1163351!5e0!3m2!1sen!2sin!4v1587800537925!5m2!1sen!2sin" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
@@ -142,6 +146,9 @@ var tableToString = (table) => {
       {
         if(vertex == 'H' ){
        var q= ('To reach ' + H + ' ' + cost+'mm');
+        document.getElementById("nav").innerHTML=q;}
+          if(vertex == 'D' ){
+       var q= ('To reach ' + D + ' ' + cost+'mm');
         document.getElementById("nav").innerHTML=q;}
       if(vertex == 'A'){
        var q= ('To reach ' + A + ' ' + cost+'mm');
@@ -228,6 +235,8 @@ var run = (graph, start, end) => {
     }
       if(path[i] == 'H'){
       console.log(H+'->');}
+          if(path[i] == 'D'){
+      console.log(D+'->');}
       if(path[i] == 'M')
       console.log(M+'->');
       if(path[i] == 'T')
