@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+<link rel="stylesheet" type="text/css" href="own.css">
+	<title>Dijkstra</title>
+  </head>
+	<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#"></a>
+     <ul class="navbar-nav mr-auto">
+     
+      <a class="navbar-brand" href="#">
+  <img style="width: 40px;height:40px;"src="pikachu.png" alt="">
+ </a>
+  
+          <li id="oo">WAY TO HOTEL!!!</li>
+    
+    
+</ul>
+</nav>
+
+<form>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="i1">FROM</label>
+  </div>
+  <select class="custom-select" id="i1">
+    <option selected>Choose...</option>
+    <option value="A">Ayyapan Dosai Kadai</option>
+    <option value="M">Murugan idli Shop</option>
+    <option value="S">Shree Mohan Hotel</option>
+       <option value="D">Dhivya Mahal</option>
+    <option value="T">The Modern Restaurant</option>
+    <option value="H">Hotel Amirtha</option>
+    <option value="N">Home</option>
+  </select>
+</div>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="i2">TOO</label>
+  </div>
+  <select class="custom-select" id="i2">
+  
+    <option selected>Choose...</option>
+  <option value="A">Ayyapan Dosai Kadai</option>
+    <option value="M">Murugan idli Shop</option>
+    <option value="S">Shree Mohan Hotel</option>
+       <option value="D">Dhivya Mahal</option>
+    <option value="T">The Modern Restaurant</option>
+    <option value="H">Hotel Amirtha</option>
+    <option value="N">Home</option>
+  </select>
+</div>
+<button type="button" class="btn btn-secondary btn-lg btn-block"onclick="runn()">FIND</button>
+
+</form>
+
+<img src="hotel2.jpg" class="img-fluid" alt="Responsive image">
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title op">THE WAY TO DESTINATION</h5>
+    <h6 class="card-subtitle mb-2 text-muted" id="nav"></h6>
+    <p class="card-text" id="nav1"></p>
+    
+  </div>
+</div>
+<div class="embed-responsive embed-responsive-16by9">
+<iframe class="embed-responsive-item"<iframe src="https://www.google.com/maps/embed?pb=!1m58!1m12!1m3!1d3930.209588314233!2d78.11305630033382!3d9.916495142873636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m43!3e2!4m5!1s0x3b00c580cd5efea7%3A0xda4632f8b65e2b05!2sHotel%20Sree%20Sabarees!3m2!1d9.91816!2d78.1126989!4m5!1s0x3b00c58171d01c83%3A0x9ff830d945ca631e!2sMurugan%20Idli%20Shop%2C%20196%2C%20W%20Masi%20Rd%2C%20Periyar%2C%20Madurai%20Main%2C%20Madurai%2C%20Tamil%20Nadu%20625001!3m2!1d9.9162197!2d78.1156251!4m5!1s0x3b00c581f25a3c47%3A0x6446ccb945ac2e47!2sAyyappan%20Dosai%20Kadai%2C%20Pandiya%20Velalar%20St%2C%20Periyar%2C%20Madurai%20Main%2C%20Madurai%2C%20Tamil%20Nadu%20625001!3m2!1d9.913220299999999!2d78.1161296!4m5!1s0x3b00c586ce11d649%3A0x44ccc48e6b922562!2sDhivya%20Mahal%2C%2021%2C%20Town%20Hall%20Rd%2C%20near%20Canara%20Bank%2C%20Madurai%20Main%2C%20Madurai%2C%20Tamil%20Nadu%20625001!3m2!1d9.9185743!2d78.11366009999999!4m5!1s0x390cdb853b21e84f%3A0xa72c074b3a9fc08!2sThe%20Modern%20Restaurants%2C%20N.S.L%20160%2C%20Netaji%20Road%2C%20Near%20Meenakshi%20Amman%20Temple%2C%20Madurai%20Main%2C%20Madurai%2C%20Tamil%20Nadu%20625001!3m2!1d9.9175417!2d78.1170157!4m5!1s0x3b00cf7a403f455f%3A0x90d804f6fd1fec20!2sHotel%20Amirtha%2C%2029-30%2C%20W%20Tower%20St%2C%20Madurai%20Main%2C%20Madurai%2C%20Tamil%20Nadu%20625001!3m2!1d9.919229699999999!2d78.1178637!4m5!1s0x3b00c5869c3aacab%3A0xa0afdc423b7e535d!2sSree%20Mohan%20Bhojanalay%2C%2033%2C%20Dhanappa%20Mudali%20Street%2C%20W%20Tower%20St%2C%20Opp%20Hotel%20Temple%20View%2C%20Madurai%2C%20Tamil%20Nadu%20625001!3m2!1d9.91977!2d78.1163351!5e0!3m2!1sen!2sin!4v1587800537925!5m2!1sen!2sin" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+  
+var A = "Ayyapan Dosai Kadai";
+var M ="Murugan Idli Shop";
+var S = "Shree Mohan Hotel";
+var D ="Dhivya Mahal";
+var T ="The Modern Restaurant";
+var H ="Hotel Amirtha";
+var N ="Home";
+    function runn() {
+var graph = [
+  'AM350',
+  'AT650',
+  'MA350',
+  'TA650',
+  'MT280',
+  'TM280',
+'MS500',
+'SM500',
+'ST290',
+'TS290',
+'SD400',
+'DS400',
+'DH500',
+'HD500',
+'HT280',
+'TH280',
+'TN400',
+'NT400',
+'NH300',
+'HN300',
+  
+];
+var parseEdge = (edge) => {
+  var [left, right, ...cost] = edge;
+  cost = parseInt(cost.join(''), 10);
+  return { left, right, cost };
+};
+
+var addToMap = (map, origin, vertex, cost) => {
+  (map[origin] = map[origin] || [])
+    .push({ vertex, cost });
+};
+
+var graphToMap = (graph) => {
+  var map = {};
+
+  for (var edge of graph) {
+    var { left, right, cost } = parseEdge(edge);
+
+    addToMap(map, left, right, cost);
+    addToMap(map, right, left, cost);
+  }
+
+  return map;
+};
+
+var tableToString = (table) => {
+  return Object.keys(table)
+    .map(vertex => {
+      var { vertex: from, cost } = table[vertex];
+      if(vertex == nav1)
+      {
+        if(vertex == 'H' ){
+       var q= ('To reach ' + H + ' ' + cost+'mm');
+        document.getElementById("nav").innerHTML=q;}
+      if(vertex == 'A'){
+       var q= ('To reach ' + A + ' ' + cost+'mm');
+        document.getElementById("nav").innerHTML=q;}
+      if(vertex == 'S'){
+       var q= ('To reach ' + S + ' ' + cost+'mm');
+        document.getElementById("nav").innerHTML=q;}
+      if(vertex == 'M'){
+       var q= ('To reach ' + M + ' ' + cost+'mm');
+        document.getElementById("nav").innerHTML=q;}
+      if(vertex == 'N'){
+       var q= ('To reach ' + N + ' ' + cost+'mm');
+        document.getElementById("nav").innerHTML=q;}
+      if(vertex == 'T'){
+       var q= ('To reach ' + T + ' ' + cost+'mm');
+        document.getElementById("nav").innerHTML=q;}
+    
+//      return `TO REACH ${vertex}: ${cost} via ${from}`;
+     
+      }
+    })
+    .join('\n');
+};
+
+var tracePath = (table, start, end) => {
+  var path = [];
+  var next = end;
+  while (true) {
+    path.unshift(next);
+    if (next === start) { break; }
+    next = table[next].vertex;
+    
+//console.log(next);
+  }
+console.log(path);
+  return path;
+};
+
+var run = (graph, start, end) => {
+  var map = graphToMap(graph);
+
+  // console.log(map);
+
+  var visited = [];
+  var frontier = [start];
+  var table = { [start]: { vertex: start, cost: 0 } };
+
+  var vertex;
+  while (vertex = frontier.shift()) {
+    // Explore unvisited neighbors
+    var neighbors = map[vertex]
+      .filter(n => !visited.includes(n.vertex));
+
+    // Add neighbors to the frontier
+    frontier.push(...neighbors.map(n => n.vertex));
+
+    var costToVertex = table[vertex].cost;
+
+    for (let { vertex: to, cost } of neighbors) {
+      var currCostToNeighbor = table[to] && table[to].cost;
+      var newCostToNeighbor = costToVertex + cost;
+      if (currCostToNeighbor == undefined ||
+          newCostToNeighbor < currCostToNeighbor) {
+        // Update the table
+        table[to] = { vertex, cost: newCostToNeighbor };
+      }
+    }
+
+    visited.push(vertex);
+  }
+
+  //console.log(table);
+
+  console.log('Here you go:');
+  console.log(tableToString(table));
+
+  var path = tracePath(table, start, end);
+
+  console.log('');
+  console.log('Shortest path is:');
+  for(var i=0;i<path.length;i++){
+    if(path[i] == 'A'){
+      console.log(A +'->');
+    }
+      if(path[i] == 'H'){
+      console.log(H+'->');}
+      if(path[i] == 'M')
+      console.log(M+'->');
+      if(path[i] == 'T')
+      console.log(T+'->');
+      if(path[i] =='N')
+      console.log(N+'->');
+      if(path[i] == 'S')
+      console.log(S+'->');
+
+  }
+};
+
+
+      var nav =  document.getElementById("i1").value;
+      var nav1 =  document.getElementById("i2").value;
+      console.log(nav);
+      console.log(nav1);
+      
+    run(graph, nav, nav1);
+    }
+		</script>
+	</body>
+</html>
