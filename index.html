@@ -70,9 +70,9 @@
   <div class="card-body">
     <div class="card-title" ><h5 id="op">THE WAY TO DESTINATION</h5>
     <h6 class="ox" id="nav"></h6>
+  
+    <p class="ob" id="na1"></p>
     </div>
-    <p class="card-text" id="nav1"></p>
-    
   </div>
 </div>
 </div>  
@@ -148,25 +148,25 @@ var tableToString = (table) => {
       if(vertex == nav1)
       {
         if(vertex == 'H' ){
-       var q= ('To reach ' + H + ' ' + cost+'mm');
+       var q= ('To reach ' + H + ' ' + 'in'+' ' + cost+'mm');
         document.getElementById("nav").innerHTML=q;}
           if(vertex == 'D' ){
-       var q= ('To reach ' + D + ' ' + cost+'mm');
+       var q= ('To reach ' + D + ' ' +  'in'+' ' +  cost+'mm');
         document.getElementById("nav").innerHTML=q;}
       if(vertex == 'A'){
-       var q= ('To reach ' + A + ' ' + cost+'mm');
+       var q= ('To reach ' + A + ' ' + 'in'+ ' ' + cost+'mm');
         document.getElementById("nav").innerHTML=q;}
       if(vertex == 'S'){
-       var q= ('To reach ' + S + ' ' + cost+'mm');
+       var q= ('To reach ' + S + ' ' + 'in'+ ' ' + cost+'mm');
         document.getElementById("nav").innerHTML=q;}
       if(vertex == 'M'){
-       var q= ('To reach ' + M + ' ' + cost+'mm');
+       var q= ('To reach ' + M + ' ' + 'in'+ ' ' + cost+'mm');
         document.getElementById("nav").innerHTML=q;}
       if(vertex == 'N'){
-       var q= ('To reach ' + N + ' ' + cost+'mm');
+       var q= ('To reach ' + N + ' ' + 'in'+ ' ' + cost+'mm');
         document.getElementById("nav").innerHTML=q;}
       if(vertex == 'T'){
-       var q= ('To reach ' + T + ' ' + cost+'mm');
+       var q= ('To reach ' + T + ' ' + 'in'+ ' ' + cost+'mm');
         document.getElementById("nav").innerHTML=q;}
     
 //      return `TO REACH ${vertex}: ${cost} via ${from}`;
@@ -229,27 +229,36 @@ var run = (graph, start, end) => {
   console.log(tableToString(table));
 
   var path = tracePath(table, start, end);
-
+var c = path.length;
+var arr =[];
   console.log('');
   console.log('Shortest path is:');
-  for(var i=0;i<path.length;i++){
-    if(path[i] == 'A'){
-      console.log(A +'->');
-    }
-      if(path[i] == 'H'){
-      console.log(H+'->');}
-          if(path[i] == 'D'){
-      console.log(D+'->');}
+  for(var i=0,j=0;i<path.length,j<path.length;i++,j++){
+    if(path[i] == 'A')
+        arr[j] = A;
+      
+    
+      if(path[i] == 'H')
+      arr[j] = H;
+        
+          if(path[i] == 'D')
+      arr[j] = D;
+        
       if(path[i] == 'M')
-      console.log(M+'->');
-      if(path[i] == 'T')
-      console.log(T+'->');
+      arr[j] =M;
+       
+      if(path[i] == 'T') 
+      arr[j] = T;
+       
       if(path[i] =='N')
-      console.log(N+'->');
+      arr[j] = N;
+      
       if(path[i] == 'S')
-      console.log(S+'->');
+      arr[j] = S;
+        }
+      document.getElementById("na1").innerHTML = arr.join('->');
 
-  }
+  
 };
 
 
